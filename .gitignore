@@ -16,3 +16,32 @@ tmp
 .yardoc
 _yardoc
 doc/
+class CreateLevels < ActiveRecord::Migration
+      def self.up
+      create_table :levels do |t|
+      t.integer :number
+      t.string :display_name
+      t.integer :required_score, :default => 0
+      t.timestamps
+      end
+      Level.create(:number => 1, :display_name => "Fresh Meat",
+      :required_score => 0)
+      Level.create(:number => 2, :display_name => "New Around Here",
+      :required_score => 50)
+      Level.create(:number => 3, :display_name => "Wallflower",
+      :required_score => 100)
+      Level.create(:number => 4, :display_name => "Learning the Ropes",
+      :required_score => 200)
+      Level.create(:number => 5, :display_name => "Something to Say",
+      :required_score => 350)
+      Level.create(:number => 6, :display_name => "Know-it-all",
+      :required_score => 600)
+      Level.create(:number => 7, :display_name => "Expert",
+      :required_score => 1000)
+      Level.create(:number => 8, :display_name => "Guru",
+      :required_score => 2000)
+      end
+      def self.down
+      drop_table :levels
+      end
+end
